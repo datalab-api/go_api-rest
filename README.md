@@ -1,6 +1,9 @@
-# GoLang API AuthenticationProject
 
-This is a RESTful API built with GoLang and Fiber framework. The project includes basic CRUD operations for user management.
+# GoLang API Project
+---
+Welcome to the GoLang API Project! This project is a RESTful API built using GoLang and the Fiber framework. It serves as a foundational example of how to set up a robust and efficient API with basic CRUD (Create, Read, Update, Delete) operations for user management. Whether you're a seasoned developer looking to integrate GoLang and Fiber into your toolkit or a beginner eager to learn more about API development in GoLang, this project provides a clear and structured starting point.
+
+This README will guide you through the project structure, installation steps, and usage instructions to help you get started quickly. You'll also find details on how to contribute to the project and links to relevant documentation.
 
 ## Project Structure
 
@@ -23,6 +26,23 @@ This is a RESTful API built with GoLang and Fiber framework. The project include
 ├── go.mod
 ├── go.sum
 └── main.go
+```
+
+## User Data Model
+
+The User model is defined in `models/user_model.go` and represents the structure of a user in the database. Here is the code:
+
+```go
+package models
+
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
+type User struct {
+	Id     primitive.ObjectID `json:"id,omitempty"`
+	Name   string             `json:"name,omitempty" validate:"required"`
+	Address string            `json:"address,omitempty" validate:"required"`
+	Phone  string             `json:"phone,omitempty" validate:"required"`
+}
 ```
 
 ## Routes
@@ -48,8 +68,8 @@ The routes for the User API are defined in the `routes/user_route.go` file. The 
 1. Clone the repository:
 
 ```sh
-git clone git@github.com:datalab-api/go_api-rest.git
-cd go_api-rest
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 ```
 
 2. Install Go dependencies:
@@ -96,7 +116,7 @@ You can use tools like [Postman](https://www.postman.com/) or [cURL](https://cur
 - **Create a User:**
 
 ```sh
-curl -X POST http://localhost:8080/user -H "Content-Type: application/json" -d '{"name":"John Doe", "email":"john.doe@example.com"}'
+curl -X POST http://localhost:8080/user -H "Content-Type: application/json" -d '{"name":"John Doe", "address":"123 Main St", "phone":"123-456-7890"}'
 ```
 
 - **Get a User by ID:**
@@ -108,7 +128,7 @@ curl http://localhost:8080/user/{userId}
 - **Update a User:**
 
 ```sh
-curl -X PUT http://localhost:8080/user/{userId} -H "Content-Type: application/json" -d '{"name":"Jane Doe"}'
+curl -X PUT http://localhost:8080/user/{userId} -H "Content-Type: application/json" -d '{"name":"Jane Doe", "address":"456 Elm St", "phone":"987-654-3210"}'
 ```
 
 - **Delete a User:**
