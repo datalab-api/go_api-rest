@@ -1,73 +1,138 @@
-Title
-===
-Abstract:xxx
-## Papar Information
-- Title:  `paper name`
-- Authors:  `A`,`B`,`C`
-- Preprint: [https://arxiv.org/abs/xx]()
-- Full-preprint: [paper position]()
-- Video: [video position]()
+Here's a README file for your Go API project, which includes a section for the routes package as well as a brief overview of the project structure and how to get started:
 
-## Install & Dependence
-- python
-- pytorch
-- numpy
+```markdown
+# GoLang API Project
 
-## Dataset Preparation
-| Dataset | Download |
-| ---     | ---   |
-| dataset-A | [download]() |
-| dataset-B | [download]() |
-| dataset-C | [download]() |
+This is a RESTful API built with GoLang and Fiber framework. The project includes basic CRUD operations for user management.
 
-## Use
-- for install dependancies
-  ```bash
-  go mod init fiber-mongo-api
-  go get -u github.com/gofiber/fiber/v2 go.mongodb.org/mongo-driver/mongo github.com/joho/godotenv github.com/go-playground/validator/v10
+## Project Structure
 
-  ```
-- for test
-  ```
-  python test.py
-  ```
-## Pretrained model
-| Model | Download |
-| ---     | ---   |
-| Model-1 | [download]() |
-| Model-2 | [download]() |
-| Model-3 | [download]() |
-
-
-## Directory Hierarchy
 ```
-|—— go.mod
+├── .github/
+├── configs/
+├── controllers/
+│   └── user_controller.go
+├── models/
+│   └── user_model.go
+├── responses/
+│   └── user_response.go
+├── routes/
+│   └── user_route.go
+├── .env
+├── .gitignore
+├── README.md
+├── docker-compose.yml
+├── entrypoint.sh
+├── go.mod
+├── go.sum
+└── main.go
 ```
-## Code Details
-### Tested Platform
-- software
-  ```
-  OS: Debian unstable (May 2021), Ubuntu LTS
-  Python: 3.8.5 (anaconda)
-  PyTorch: 1.7.1, 1.8.1
-  ```
-- hardware
-  ```
-  CPU: Intel Xeon 6226R
-  GPU: Nvidia RTX3090 (24GB)
-  ```
-### Hyper parameters
+
+## Routes
+
+The routes for the User API are defined in the `routes/user_route.go` file. The following endpoints are available:
+
+- `POST /user`: Create a new user
+- `GET /user/:userId`: Retrieve a specific user by ID
+- `PUT /user/:userId`: Update a specific user by ID
+- `DELETE /user/:userId`: Delete a specific user by ID
+- `GET /users`: Retrieve all users
+
+## Getting Started
+
+### Prerequisites
+
+- Go (version 1.16+)
+- Docker (optional, for containerization)
+- Fiber v2 (Go web framework)
+
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 ```
+
+2. Install Go dependencies:
+
+```sh
+go mod tidy
 ```
-## References
-- [paper-1]()
-- [paper-2]()
-- [code-1](https://github.com)
-- [code-2](https://github.com)
-  
+
+3. Set up the environment variables. Create a `.env` file in the root directory and add the necessary variables:
+
+```env
+# Example .env file content
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=youruser
+DB_PASSWORD=yourpassword
+DB_NAME=yourdbname
+```
+
+4. Run the application:
+
+```sh
+go run main.go
+```
+
+### Using Docker
+
+If you prefer to use Docker, you can start the application with Docker Compose:
+
+1. Build and start the containers:
+
+```sh
+docker-compose up --build
+```
+
+2. The API should now be running on `http://localhost:8080`.
+
+## Usage
+
+You can use tools like [Postman](https://www.postman.com/) or [cURL](https://curl.se/) to test the endpoints.
+
+### Example Requests
+
+- **Create a User:**
+
+```sh
+curl -X POST http://localhost:8080/user -H "Content-Type: application/json" -d '{"name":"John Doe", "email":"john.doe@example.com"}'
+```
+
+- **Get a User by ID:**
+
+```sh
+curl http://localhost:8080/user/{userId}
+```
+
+- **Update a User:**
+
+```sh
+curl -X PUT http://localhost:8080/user/{userId} -H "Content-Type: application/json" -d '{"name":"Jane Doe"}'
+```
+
+- **Delete a User:**
+
+```sh
+curl -X DELETE http://localhost:8080/user/{userId}
+```
+
+- **Get All Users:**
+
+```sh
+curl http://localhost:8080/users
+```
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure your code follows the project's coding standards and includes appropriate tests.
+
 ## License
 
-## Citing
-If you use xxx,please use the following BibTeX entry.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 ```
-```
+
+Feel free to modify the README content to better fit your project's specific details and requirements.
