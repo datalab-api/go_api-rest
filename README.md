@@ -48,8 +48,8 @@ The routes for the User API are defined in the `routes/user_route.go` file. The 
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone git@github.com:datalab-api/go_api-rest.git
+cd go_api-rest
 ```
 
 2. Install Go dependencies:
