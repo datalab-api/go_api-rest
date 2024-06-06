@@ -1,13 +1,10 @@
-Here's a README file for your Go API project, which includes a section for the routes package as well as a brief overview of the project structure and how to get started:
-
-```markdown
-# GoLang API Project
+# GoLang API AuthenticationProject
 
 This is a RESTful API built with GoLang and Fiber framework. The project includes basic CRUD operations for user management.
 
 ## Project Structure
 
-```
+```bash
 ├── .github/
 ├── configs/
 ├── controllers/
